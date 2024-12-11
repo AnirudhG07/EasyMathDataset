@@ -1,0 +1,20 @@
+[project]
+name = "obviousmathdataset"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "AnirudhG07", email = "anirudhgupta@iisc.ac.in" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=1.57.1",
+    "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+dc = "obviousmathdataset:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
