@@ -1,8 +1,8 @@
 import json
 import os
 
-from obviousmathdataset.proof_problems_gpt import data_gen
-from obviousmathdataset.proof_response_gpt import output_gen_parse
+from easymathdataset.proof_problems_gpt import data_gen
+from easymathdataset.proof_response_gpt import output_gen_parse
 
 MATH_TOPICS = [
     "Linear Algebra",
@@ -25,9 +25,12 @@ MATH_TOPICS = [
     "Number Theory",
     "Complex Analysis",
     "Vector Calculus",
+    "Basic Group Properties",
+    "Subgroups and Cosets",
+    "Group Homomorphisms",
 ]
 
-NO_OF_PROBLEMS = 2
+NO_OF_PROBLEMS = 10
 
 class MathDatasetGenerator:
     def __init__(self, topics, num_problems, output_file):
@@ -86,6 +89,7 @@ class MathDatasetGenerator:
                     "proof": output_gen_parse(topic, problem),
                 }
                 self.dataset.append(problem_entry)
+                self._save_data()  # Save after adding each problem
 
     def save_dataset(self):
         """Public method to save the dataset."""
@@ -104,7 +108,7 @@ class MathDatasetGenerator:
 def main():
     # Configuration
     base_dir = os.path.dirname(__file__)
-    OUTPUT_FILE = os.path.join(base_dir, "ObviousMathData.json")
+    OUTPUT_FILE = os.path.join(base_dir, "..", "..", "EasyMathDataset.json")
 
     # Initialize and run the generator
     generator = MathDatasetGenerator(MATH_TOPICS[:2], NO_OF_PROBLEMS, OUTPUT_FILE)

@@ -1,5 +1,5 @@
 [project]
-name = "obviousmathdataset"
+name = "easymathdataset"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-dc = "obviousmathdataset:main"
+dc = "easymathdataset:main"
 
 [build-system]
 requires = ["hatchling"]
