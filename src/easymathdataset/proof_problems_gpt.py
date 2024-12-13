@@ -26,7 +26,7 @@ def generate_problems_gpt(topic: str, quant:int = 10, model:str = "gpt-4o"):
                 { "role": "system", "content": [
                     {
                         "type": "text",
-                        "text": "You are an expert mathematician. Your task is to create trivial, easy and obvious mathematical statements based on given topics. From the given topic, give a variety of statements covering different aspects of the topic. Do not write the proof, just the problem statement. Enclose each problem statement in <p> and </p> tags."
+                        "text": "You are an expert mathematician. Your task is to create trivial, easy and obvious mathematical statements based on given topics. From the given topic, give a variety of statements covering different aspects of the topic. A problem is considered easy if any novice mathematician would agree with it just by reading it. Do not give definitions, theorems or lemmas as statements. Do not write the proof, just the problem statement. Enclose each problem statement in <p> and </p> tags."
                     }
                 ]
                 },
@@ -81,5 +81,5 @@ def data_gen(topic: str, quant: int = 10, model: str = "gpt-4o"):
 
 
 if __name__ == "__main__":
-    print(data_gen("Number Theory", 10))
+    print(data_gen("Linear Algebra", 10))
 
