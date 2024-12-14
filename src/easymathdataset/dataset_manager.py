@@ -194,11 +194,12 @@ class MathProofDatasetManager:
     
     def summary_dataset(self) -> List[str]:
         """
-        List all topics in the dataset.
+        List all topics in the dataset, along with the number of proof problems for each topic.
         
         :return: List of topics
         """
-        return list(self.dataset.keys())
+        return [f"{topic}: {len(self.dataset[topic])} proofs" for topic in self.dataset]
+
 # Example usage
 def main():
     # Initialize the dataset manager
@@ -211,13 +212,19 @@ def main():
     #    dataset_manager.add_topic_proofs(topic, num_problems=NO_OF_PROBLEMS)
 
     # Add a proof manually
-    #dataset_manager.add_proof_manually("Number Theory", "Prove that there are infinitely many prime numbers.")
+    ps = [
+        "A statement and its contrapositive are logically equivalent.",
+        "The conjunction of two true statements is true."
+    ]
+    for p in ps:
+        dataset_manager.add_proof_manually("Logic", p, check_proof=True)
 
     # Remove a proof
-    dataset_manager.remove_proof("Geometry", [8, 12, 14, 6])
+    #dataset_manager.remove_proof("Logic", [6, 11])
 
-    # List available topics
-    print("Available Topics:", dataset_manager.summary_dataset())
+    # Summary of the dataset
+    print("\n".join(dataset_manager.summary_dataset()))
+
 
 if __name__ == "__main__":
     main()
