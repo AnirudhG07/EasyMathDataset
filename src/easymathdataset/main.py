@@ -63,4 +63,3 @@ def summary():
     for topic, problems in dataset.items():
         click.echo(f"{topic}: {len(problems)} problems")
 
-
