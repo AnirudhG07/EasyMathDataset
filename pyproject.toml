@@ -1,19 +1,20 @@
 [project]
 name = "easymathdataset"
 version = "0.1.0"
-description = "Add your description here"
+description = "CLI to easily manage the EasyMathDataset."
 readme = "README.md"
 authors = [
     { name = "AnirudhG07", email = "anirudhgupta@iisc.ac.in" }
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "click>=8.1.7",
     "openai>=1.57.1",
     "python-dotenv>=1.0.1",
 ]
 
 [project.scripts]
-dc = "easymathdataset:main"
+emad = "easymathdataset:main"
 
 [build-system]
 requires = ["hatchling"]
