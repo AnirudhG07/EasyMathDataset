@@ -52,6 +52,13 @@ class MathProofDatasetManager:
             with open(self.dataset_path, 'r') as f:
                 return json.load(f)
         return {}
+
+    def _latex_formatter(self, text: str) -> str:
+        """
+        The output code may contain `\\` instead of single backslash for latex syntaxes making it
+        difficult to use in latex documents. This function replaces `\\` with single backslash.
+        """
+        return text.replace("\\\\", "\\")
     
     def generate_proofs(self, topic: str, num_problems: int = 10, model: str = "gpt-4o") -> List[Dict]:
         """
@@ -70,19 +77,21 @@ class MathProofDatasetManager:
                 last_id = max(int(problem["id"]) for problem in existing_problems)
             else:
                 last_id = 0
+
+            new_problems = []
             
             for i, problem in enumerate(problems, 1):
                 proof = output_gen_parse(topic, problem)
-                new_problem = {
+                problem_unit = {
                     "id": f"{last_id + i}",
-                    "statement": problem,
-                    "proof": proof
+                    "statement": self._latex_formatter(problem),
+                    "proof": self._latex_formatter(proof)
                 }
                 # Save the new problem individually
-                self.dataset[topic].append(new_problem)
+                new_problems.append(problem_unit)
                 print(f"Generated and saved proof {last_id + i} for {topic}")
             
-            return self.dataset[topic]
+            return new_problems
         except Exception as e:
             logging.error(f"Error generating proofs for {topic}: {e}")
             return []
@@ -106,7 +115,7 @@ class MathProofDatasetManager:
         self.dataset[topic].extend(new_problems)
         
         # Save updated dataset
-        #self._save_dataset()
+        self._save_dataset()
     
     def add_proof_manually(self, topic: str, statement: str, proof: str, custom_id: Optional[str] = None):
         """
@@ -126,8 +135,8 @@ class MathProofDatasetManager:
         
         new_proof = {
             "id": custom_id,
-            "statement": statement,
-            "proof": proof
+            "statement": self._latex_formatter(statement),
+            "proof": self._latex_formatter(proof)
         }
         
         self.dataset[topic].append(new_proof)
