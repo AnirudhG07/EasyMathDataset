@@ -157,7 +157,7 @@
     {
       "id": "1",
       "statement": "The sum of the interior angles of any triangle is 180 degrees.",
-      "proof": "To prove that the sum of the interior angles of any triangle is 180 degrees, we can use a geometric approach involving parallel lines.\n\nConsider a triangle $\\triangle ABC$. We want to show that the sum of the angles $\\angle A + \\angle B + \\angle C = 180^\\circ$.\n\n1. Draw a line parallel to the side $BC$ of the triangle through the vertex $A$. Let this line intersect the extensions of sides $AB$ and $AC$ at points $D$ and $E$, respectively.\n\n2. Since $DE$ is parallel to $BC$, by the Alternate Interior Angles Theorem, we have:\n   - $\\angle DAB = \\angle ABC$ (alternate interior angles)\n   - $\\angle EAC = \\angle ACB$ (alternate interior angles)\n\n3. The angles $\\angle DAB$, $\\angle BAC$, and $\\angle CAE$ form a straight line at point $A$, so their sum is $180^\\circ$:\n   \\[\n   \\angle DAB + \\angle BAC + \\angle CAE = 180^\\circ\n   \\]\n\n4. Substituting the equal angles from step 2, we get:\n   \\[\n   \\angle ABC + \\angle BAC + \\angle ACB = 180^\\circ\n   \\]\n\nThus, the sum of the interior angles of triangle $\\triangle ABC$ is $180^\\circ$. This completes the proof."
+      "proof": "Consider a triangle with vertices $A$, $B$, and $C$. Draw a line parallel to side $BC$ through vertex $A$. By the alternate interior angle theorem, the angles at $B$ and $C$ of the triangle are equal to the corresponding alternate angles formed by the parallel line and the transversal lines $AB$ and $AC$. Since the angles on a straight line sum to $180^\circ$, the sum of the interior angles of the triangle, $\\angle A + \\angle B + \\angle C$, is $180^\circ$."
     },
     {
       "id": "2",
@@ -1548,3 +1548,4 @@
     }
   ]
 }
+

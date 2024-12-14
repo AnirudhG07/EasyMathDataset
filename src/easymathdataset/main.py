@@ -33,7 +33,6 @@ def ex(topic, id):
     """
     with open(DATASET_PATH, "r") as f:
         data = f.read()
-        # Use regex to escape backslashes that are not already escaped
         dataset = json.loads(data)
 
     if topic in dataset:
