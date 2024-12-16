@@ -33,7 +33,6 @@ def ex(topic, id):
     """
     with open(DATASET_PATH, "r") as f:
         data = f.read()
-        # Use regex to escape backslashes that are not already escaped
         dataset = json.loads(data)
 
     if topic in dataset:
@@ -62,5 +61,4 @@ def summary():
     
     for topic, problems in dataset.items():
         click.echo(f"{topic}: {len(problems)} problems")
-
 
