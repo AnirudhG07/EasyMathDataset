@@ -213,14 +213,13 @@ def main():
 
     # Add a proof manually
     ps = [
-        "A statement and its contrapositive are logically equivalent.",
-        "The conjunction of two true statements is true."
+        "If A is subset of B, and B is subset of C, then A is subset of C.",
     ]
     for p in ps:
-        dataset_manager.add_proof_manually("Logic", p, check_proof=True)
+        dataset_manager.add_proof_manually("Set Theory", p, check_proof=True)
 
     # Remove a proof
-    #dataset_manager.remove_proof("Logic", [6, 11])
+    #dataset_manager.remove_proof("Set Theory", [10])
 
     # Summary of the dataset
     print("\n".join(dataset_manager.summary_dataset()))
